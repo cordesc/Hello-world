@@ -1,0 +1,32 @@
+shopping_list = ["banana", "orange", "apple"]
+
+stock = {
+    "banana": 6,
+    "apple": 0,
+    "orange": 32,
+    "pear": 15
+}
+    
+prices = {
+    "banana": 4,
+    "apple": 2,
+    "orange": 1.5,
+    "pear": 3
+}
+
+# Write your code below!
+def compute_bill(food):
+    total = 0
+    print "Full order: %s" %(food)
+    print "Checking Stock..."
+    for k in set(food):
+        print "Request: %s %s, Stock: %s" %(k,food.count(k),stock[k])
+        if stock[k] > 0:
+            print "We have avalaible: %s (%s), %s (price)" %(stock[k],k,prices[k])
+            total += prices[k]*food.count(k)
+            stock[k] = stock[k]-1
+        else:
+            print "We don't have any %s available" %(k)
+    return total 
+
+print compute_bill(['apple', 'banana','banana'])
